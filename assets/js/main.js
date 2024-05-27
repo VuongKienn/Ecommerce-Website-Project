@@ -1,3 +1,14 @@
+function imgGallery(){
+  const mainIng  = document.querySelector('.details__img'),
+    smallIng =document.querySelectorAll('.details__small-img');
+
+  smallIng.forEach((img)=>{
+    img.addEventListener('click', function(){
+      mainIng.src = this.src;
+    });
+  });
+}
+imgGallery();
 // swiper categories
 var swiperCategories = new Swiper(".categories__container", {
     spaceBetween: 24,
