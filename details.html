@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <title>Document</title>
+    <title>Ecommerce</title>
 </head>
 
 <body>
@@ -86,6 +86,7 @@
                 <li><span class="breadcrumb__link">Henley Shirt</span></li>
             </ul>
         </section>
+
         <!-- Details -->
         <section class="details section--lg">
             <div class="details__container container grid">
@@ -201,10 +202,356 @@
                 </div>
             </div>
         </section>
+
         <!-- Details Tab -->
-        <section class="details__tab"></section>
+        <section class="details__tab container">
+            <div class="details__tabs">
+                <span class="details__tab active-tab" data-target="#info">
+                    Additional Info
+                </span>
+                <span class="details__tab" data-target="#reviews">Review(3)</span>
+            </div>
+            <div class="details__tabs-content">
+                <div class="details__tab-content active-tab" content id="info">
+                    <table class="info__table">
+                        <tr>
+                            <th>Stand Up</th>
+                            <td>35"Lx24*Wx37-45*H( front to back wheel)</td>
+                        </tr>
+                        <tr>
+                            <th>Folded (w/o wheels)</th>
+                            <td>32.5"Lx18.5*Wx16.5*H</td>
+                        </tr>
+                        <tr>
+                            <th>Folded (w/ wheels)</th>
+                            <td>32.5"Lx24*Wx18.5*H</td>
+                        </tr>
+                        <tr>
+                            <th>Door Pass Through</th>
+                            <td>24</td>
+                        </tr>
+                        <tr>
+                            <th>Frame</th>
+                            <td>Aluminum</td>
+                        </tr>
+                        <tr>
+                            <th>Weight(w/o wheel)</th>
+                            <td>20 LBS</td>
+                        </tr>
+                        <tr>
+                            <th>Weight Capacity</th>
+                            <td>60 LBS</td>
+                        </tr>
+                        <tr>
+                            <th>Width</th>
+                            <td>24"</td>
+                        </tr>
+                        <tr>
+                            <th>Handle height (ground to handle)</th>
+                            <td>37-45"</td>
+                        </tr>
+                        <tr>
+                            <th>Wheels</th>
+                            <td> 12"air / wide track slick tread</td>
+                        </tr>
+                        <tr>
+                            <th>Seat back height</th>
+                            <td>21.5"</td>
+                        </tr>
+                        <tr>
+                            <th>Head room (inside canopy)</th>
+                            <td>25"</td>
+                        </tr>
+                        <tr>
+                            <th>Color</th>
+                            <td>Black, Blue, Read, White</td>
+                        </tr>
+                        <tr>
+                            <th>Size</th>
+                            <td>M, S</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="details__tab-content" content id="reviews">
+                    <div class="reviews__container grid">
+                        <div class="review__single">
+                            <div>
+                                <img src="assets/img/avatar-1.jpg" alt="" class="review__img">
+                                <h4 class="review__title">Jacky Chan</h4>
+                            </div>
+                            <div class="review__data">
+                                <div class="review__rating">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                </div>
+                                <p class="review__description">Thank you very fast shipping from Poland only 3days.</p>
+                                <span class="review__date">December 4, 2020 at 3:12 pm</span>
+                            </div>
+                        </div>
+                        <div class="review__single">
+                            <div>
+                                <img src="assets/img/avatar-2.jpg" alt="" class="review__img">
+                                <h4 class="review__title">Hellen Sela</h4>
+                            </div>
+                            <div class="review__data">
+                                <div class="review__rating">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                </div>
+                                <p class="review__description">Great low price and works well.</p>
+                                <span class="review__date">December 5, 2020 at 5:21 am</span>
+                            </div>
+                        </div>
+                        <div class="review__single">
+                            <div>
+                                <img src="assets/img/avatar-3.jpg" alt="" class="review__img">
+                                <h4 class="review__title">Kasel Nata</h4>
+                            </div>
+                            <div class="review__data">
+                                <div class="review__rating">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                </div>
+                                <p class="review__description">Authentic and Beautiful, Love these way more than ever expected.</p>
+                                <span class="review__date">December 8, 2020 at 10:35 pm</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="review__form">
+                        <h4 class="review__form-title">Add a review</h4>
+                        <div class="rate__product">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+
+                        <form action="" class="form grid">
+                            <textarea class="form__input textarea" placeholder="Write  Comment"></textarea>
+                            <div class="form__group grid">
+                                <input type="text" placeholder="Name" class="form__input">
+                                <input type="email" placeholder="Email" class="form__input">
+                            </div>
+
+                            <div class="form__btn">
+                                <button class="btn">Submit Review</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- products -->
-        <section class="products"></section>
+        <section class="products container section--lg">
+            <h3 class="section__title">
+                <span>Related</span> Products
+            </h3>
+            <div class="products__container grid">
+                <div class="product__item">
+                    <div class="product__banner">
+                        <a href="details.html" class="product___images">
+                            <img src="assets/img/product-1-1.jpg" alt="" class="product__img default">
+
+                            <img src="assets/img/product-1-2.jpg" alt="" class="product__img hover">
+                        </a>
+
+                        <div class="product__actions">
+                            <a href="#" class="action__btn" aria-label="Quick View">
+                                <i class="fa-regular fa-eye"></i>
+                            </a>
+
+                            <a href="#" class="action__btn" aria-label="Add To Wishlist">
+                                <i class="fa-regular fa-heart"></i>
+                            </a>
+                            
+                            <a href="#" class="action__btn" aria-label="Compare">
+                                <i class="fa-solid fa-shuffle"></i>
+                            </a>
+                        </div>
+
+                        <div class="product__badge light-pink">Hot</div>
+                    </div>
+
+                    <div class="product__content">
+                        <span class="product__catefory">Clothing</span>
+                        <a href="details.html">
+                            <h3 class="product__title">Colorful Pattern Shirts</h3>
+                        </a>
+                        <div class="product__rating">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <div class="product__price flex">
+                            <span class="new__price">$234.85</span>
+                            <span class="old__price">$243.85</span>
+                        </div>
+
+                        <a href="#" class="action__btn cart__btn" aria-label="Add To Cart">
+                            <i class="fa-solid fa-bag-shopping"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="product__item">
+                    <div class="product__banner">
+                        <a href="details.html" class="product___images">
+                            <img src="assets/img/product-2-1.jpg" alt="" class="product__img default">
+
+                            <img src="assets/img/product-2-2.jpg" alt="" class="product__img hover">
+                        </a>
+
+                        <div class="product__actions">
+                            <a href="#" class="action__btn" aria-label="Quick View">
+                                <i class="fa-regular fa-eye"></i>
+                            </a>
+
+                            <a href="#" class="action__btn" aria-label="Add To Wishlist">
+                                <i class="fa-regular fa-heart"></i>
+                            </a>
+                            
+                            <a href="#" class="action__btn" aria-label="Compare">
+                                <i class="fa-solid fa-shuffle"></i>
+                            </a>
+                        </div>
+
+                        <div class="product__badge light-green">Hot</div>
+                    </div>
+
+                    <div class="product__content">
+                        <span class="product__catefory">Clothing</span>
+                        <a href="details.html">
+                            <h3 class="product__title">Colorful Pattern Shirts</h3>
+                        </a>
+                        <div class="product__rating">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <div class="product__price flex">
+                            <span class="new__price">$234.85</span>
+                            <span class="old__price">$243.85</span>
+                        </div>
+
+                        <a href="#" class="action__btn cart__btn" aria-label="Add To Cart">
+                            <i class="fa-solid fa-bag-shopping"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="product__item">
+                    <div class="product__banner">
+                        <a href="details.html" class="product___images">
+                            <img src="assets/img/product-6-1.jpg" alt="" class="product__img default">
+
+                            <img src="assets/img/product-6-2.jpg" alt="" class="product__img hover">
+                        </a>
+
+                        <div class="product__actions">
+                            <a href="#" class="action__btn" aria-label="Quick View">
+                                <i class="fa-regular fa-eye"></i>
+                            </a>
+
+                            <a href="#" class="action__btn" aria-label="Add To Wishlist">
+                                <i class="fa-regular fa-heart"></i>
+                            </a>
+                            
+                            <a href="#" class="action__btn" aria-label="Compare">
+                                <i class="fa-solid fa-shuffle"></i>
+                            </a>
+                        </div>
+
+                        <div class="product__badge light-green">-30%</div>
+                    </div>
+
+                    <div class="product__content">
+                        <span class="product__catefory">Clothing</span>
+                        <a href="details.html">
+                            <h3 class="product__title">Colorful Pattern Shirts</h3>
+                        </a>
+                        <div class="product__rating">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <div class="product__price flex">
+                            <span class="new__price">$234.85</span>
+                            <span class="old__price">$243.85</span>
+                        </div>
+
+                        <a href="#" class="action__btn cart__btn" aria-label="Add To Cart">
+                            <i class="fa-solid fa-bag-shopping"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="product__item">
+                    <div class="product__banner">
+                        <a href="details.html" class="product___images">
+                            <img src="assets/img/product-7-1.jpg" alt="" class="product__img default">
+
+                            <img src="assets/img/product-7-2.jpg" alt="" class="product__img hover">
+                        </a>
+
+                        <div class="product__actions">
+                            <a href="#" class="action__btn" aria-label="Quick View">
+                                <i class="fa-regular fa-eye"></i>
+                            </a>
+
+                            <a href="#" class="action__btn" aria-label="Add To Wishlist">
+                                <i class="fa-regular fa-heart"></i>
+                            </a>
+                            
+                            <a href="#" class="action__btn" aria-label="Compare">
+                                <i class="fa-solid fa-shuffle"></i>
+                            </a>
+                        </div>
+
+                        <div class="product__badge light-green">-30%</div>
+                    </div>
+
+                    <div class="product__content">
+                        <span class="product__catefory">Clothing</span>
+                        <a href="details.html">
+                            <h3 class="product__title">Colorful Pattern Shirts</h3>
+                        </a>
+                        <div class="product__rating">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <div class="product__price flex">
+                            <span class="new__price">$234.85</span>
+                            <span class="old__price">$243.85</span>
+                        </div>
+
+                        <a href="#" class="action__btn cart__btn" aria-label="Add To Cart">
+                            <i class="fa-solid fa-bag-shopping"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <section class="newsletter section home__newsletter">
             <div class="newsletter__container container grid">
