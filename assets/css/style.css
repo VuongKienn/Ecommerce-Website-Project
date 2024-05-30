@@ -1095,10 +1095,13 @@ table{
 .table__description,
 .table__price,
 .table__subtotal,
-.table__trash{
+.table__trash,
+.table__stock
+{
     font-size: var(--small-font-size);
 }
-.table__title{
+.table__title,
+.table__stock{
     color: var(--first-color);
 }
 .table__description{
@@ -1114,4 +1117,77 @@ table{
     gap: 0.75rem;
     margin-top: 1.5rem;
 
+}
+.divider{
+    position: relative;
+    text-align: center;
+    margin-block: 3rem ;
+}
+.divider::before{
+    content: '';
+    position: absolute;
+    top: 50% ;
+    left: 0;
+    width: 100%;
+    border-top: 2px solid var(--border-color-alt);
+}
+.divider i{
+    color: var(--text-color-light);
+    background-color: var(--body-color);
+    font-size: 1.25rem;
+    padding-inline: 1.25rem;
+    position: relative;
+    z-index: 10;
+}
+.cart__group{
+    grid-template-columns: repeat(2, 1fr);
+    align-items: flex-start;
+}
+.cart__shipping .section__title,
+.cart__coupon .section__title,
+.cart__total .section__title{
+    font-size: var(--large-font-size);
+    margin-bottom: 1rem;
+}
+.cart__coupon{
+    margin-top: 3rem;
+}
+.coupon__form .form__group{
+    align-items: center;
+}
+.cart__total{
+    border: 1px solid var(--border-color-alt);
+    border-radius: 0.25rem;
+    padding: 1.75rem;
+}
+.cart__total-table{
+    margin-bottom: 1rem;
+}
+.cart__total-table tr td{
+    border: 1px solid var(--border-color-alt);
+    padding: 0.75rem 0.5rem;
+    width: 50%;
+}
+.cart__total-title{
+    font-size: var(--small-font-size);
+}
+.cart__total-price{
+    color: var(--first-color);
+    font-weight: var(--weight-600);
+}
+.cart__total .btn{
+    display: inline-flex;
+}
+/* .fixed{
+    position: fixed;
+} */
+.login-register__container{
+    grid-template-columns: repeat(2, 1fr);
+    align-items: flex-start;
+}
+.login,
+.register{
+    border: 1px solid var(--border-color-alt);
+    padding: 2rem;
+    border-radius: 0.5rem;
 }
