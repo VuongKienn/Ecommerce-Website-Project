@@ -1,7 +1,7 @@
 /* import gg font */
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Spartan:wght@100..900&display=swap');
-
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap'); */
 :root {
     --header-height: 4rem;
 
@@ -15,6 +15,9 @@
     --container-color: hsl(0,0%,93%);
     --border-color: hsl(129,36%,85%);
     --border-color-alt: hsl(113,15%,90%);
+
+    --success-color: #2691d9;
+    --error-color: #e74c3c;
 
     --body-font: 'Lato', sans-serif;
     --second-font: 'Spartan', sans-serif;
@@ -1500,20 +1503,6 @@ table{
 .cart__total .btn{
     display: inline-flex;
 }
-/* .fixed{
-    position: fixed;
-} */
-.login-register__container{
-    grid-template-columns: repeat(2, 1fr);
-    align-items: flex-start;
-}
-.login,
-.register{
-    border: 1px solid var(--border-color-alt);
-    padding: 2rem;
-    border-radius: 0.5rem;
-}
-
 /* checkout     */
 .checkout__container{
     grid-template-columns: repeat(2, 1fr);
@@ -1652,4 +1641,97 @@ table{
 }
 .edit{
     font-size: var(--small-font-size);
+}
+
+/* login-register */
+.box{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: url(../img/login_bg2.jpg) no-repeat center center/cover;
+    /* filter: blur(8px); */
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+}
+.box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+.wrapper{
+    position: relative;
+    z-index: 2;
+    width: 320px;
+    background-color: white;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    padding: 30px;
+
+}
+.title{
+    font-family: var(--title-font);
+    text-align: center;
+    margin: 15px 0px;
+    font-weight: var(--weight-700);
+}
+.control{
+    width: 100%;
+    position: relative;
+}
+.control input{
+    width: 100%;
+    height: 40px;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid #dadada;
+    margin-bottom: 10px;
+}
+.control span{
+    position: absolute;
+    border-bottom:  3px solid var(--first-color);
+    left: 0;
+    top: 38px;
+    width: 0%;
+    transition: 0.4s;
+}
+.control input:focus~span{
+    width: 100%;
+}
+.control.error small{
+    color: var(--error-color);
+}
+.control.error input{
+    border-bottom: 2px solid var(--error-color);
+}
+
+.submit button{
+    width: 100%;
+    border-radius: 15px ;
+    cursor: pointer;
+    font-size: var(--large-font-size);
+    margin: 15px auto;
+}
+.SignIn{ 
+    text-align: center;
+}
+.SignIn a, .forgot a{
+    text-decoration: none;
+    color: var(--first-color);
+}
+.SignIn a{
+    margin-left: 10px ;
+}
+SignIn a:hover{
+    text-decoration: underline;
 }
