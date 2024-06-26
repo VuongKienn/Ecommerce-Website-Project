@@ -1735,3 +1735,6 @@ table{
 SignIn a:hover{
     text-decoration: underline;
 }
+.hidden{
+    display: none;
+}
