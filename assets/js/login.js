@@ -1,6 +1,6 @@
 var email = document.querySelector('#email');
 var password = document.querySelector('#password');
-var form = document.querySelector('form');
+var loginForm = document.querySelector('#loginForm');
 
 function showError(input, message){
     let parent = input.parentElement;
@@ -26,112 +26,89 @@ function checkEmptyError(listInput){
     });
     return isEmptyError;
 }
-form.addEventListener('submit', function(e){
+function checkEmailError(input){
+    const regexEmail =
+  /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+
+  input.value= input.value.trim()
+
+  let isEmailError =!regexEmail.test(input.value) ;
+
+  if(!regexEmail.test(input.value)){
+    showError(input,'Email Invalid')
+  }
+  return isEmailError;
+}
+loginForm.addEventListener('submit', function(e){
     e.preventDefault();
     showSuccess(password)
     showSuccess(email)
+
+    let isEmailError = checkEmailError(email);
     let isEmptyError = checkEmptyError([email, password]);
     if( isEmailError){
         //do nothing
     }else{
-        //call API
-        document.getElementById('loginForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-        
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-        
-            try {
-                // Gọi API đăng nhập
-                const loginResponse = await fetch('YOUR_LOGIN_API_ENDPOINT', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ email, password })
-                });
-        
-                if (loginResponse.ok) {
-                    // Đăng nhập thành công, gửi OTP qua email
-                    const otpResponse = await fetch('SEND_OTP_API', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({ email })
-                    });
-        
-                    if (otpResponse.ok) {
-                        // Hiển thị form xác thực OTP
-                        document.getElementById('loginForm').classList.add('hidden');
-                        document.getElementById('Verification').classList.remove('hidden');
-        
-                        // Bắt sự kiện submit của form xác thực OTP
-                        document.getElementById('Verification').addEventListener('submit', async function(e) {
-                            e.preventDefault();
-        
-                            const otpCode = document.getElementById('otpCode').value;
-        
-                            try {
-                                // Gọi API xác thực OTP
-                                const verifyOtpResponse = await fetch('VERIFY_OTP_API', {
-                                    method: 'POST',
-                                    headers: {
-                                        'Content-Type': 'application/json'
-                                    },
-                                    body: JSON.stringify({ email, otpCode })
-                                });
-        
-                                if (verifyOtpResponse.ok) {
-                                    // OTP xác thực thành công, lấy Keycloak token
-                                    const keycloakResponse = await fetch('KEYCLOAK_API', {
-                                        method: 'POST',
-                                        headers: {
-                                            'Content-Type': 'application/json'
-                                        },
-                                        body: JSON.stringify({ email, password })
-                                    });
-        
-                                    if (keycloakResponse.ok) {
-                                        const keycloakData = await keycloakResponse.json();
-                                        const keycloakToken = keycloakData.keycloakToken;
-        
-                                        // Lưu Keycloak token vào localStorage
-                                        localStorage.setItem('keycloakToken', keycloakToken);
-        
-                                        // Chuyển hướng sau khi đăng nhập thành công
-                                        window.location.href = '../index.html';
-                                    } else {
-                                        const keycloakErrorData = await keycloakResponse.json();
-                                        console.error('Lấy Keycloak token thất bại:', keycloakErrorData);
-                                        alert('Lấy Keycloak token thất bại. Vui lòng thử lại.');
-                                    }
-                                } else {
-                                    const verifyOtpErrorData = await verifyOtpResponse.json();
-                                    console.error('Xác thực OTP thất bại:', verifyOtpErrorData);
-                                    alert('Xác thực OTP thất bại. Vui lòng kiểm tra lại mã OTP.');
-                                }
-                            } catch (error) {
-                                console.error('Có lỗi xảy ra:', error);
-                                alert('Có lỗi xảy ra. Vui lòng thử lại sau.');
-                            }
-                        });
-                    } else {
-                        const otpErrorData = await otpResponse.json();
-                        console.error('Gửi OTP thất bại:', otpErrorData);
-                        alert('Gửi OTP thất bại. Vui lòng thử lại.');
-                    }
-                } else {
-                    const loginErrorData = await loginResponse.json();
-                    console.error('Đăng nhập thất bại:', loginErrorData);
-                    alert('Đăng nhập thất bại. Vui lòng kiểm tra lại thông tin đăng nhập.');
-                }
-            } catch (error) {
-                console.error('Có lỗi xảy ra:', error);
-                alert('Có lỗi xảy ra. Vui lòng thử lại sau.');
-            }
-        });
-        
-        
+        //call API  
+        callLoginAPI(email.value, password.value);
     }
-})
+});
+function callLoginAPI(email, password) {
+    fetch('URL_API_DANG_NHAP', {////////////////////////////////////////
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            email: email,
+            password: password
+        })
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Login failed');
+        }
+        return response.json();
+    })
+    .then(data => {
+        // Xử lý thành công đăng nhập
+        console.log('Login successful:', data);
+        
+        // Lưu access token và refresh token vào localStorage
+        localStorage.setItem('accessToken', data.accessToken);
+        localStorage.setItem('refreshToken', data.refreshToken);
+
+        // Gọi hàm để lấy thông tin từ access token và xử lý tùy theo role
+        handleRoleAuthorization(data.accessToken);
+    })
+    .catch(error => {
+        // Xử lý lỗi đăng nhập
+        console.error('Error:', error);
+        alert('Login failed. Please try again.');
+    });
+}
+
+function handleRoleAuthorization(accessToken) {
+    // Giải mã access token để lấy thông tin user, ví dụ như role
+    const payload = parseJwt(accessToken);
+    const userRole = payload.role;
+
+    // Xử lý tùy theo role, ví dụ chuyển hướng đến trang phù hợp
+    if (userRole === 'admin') {
+        window.location.href = 'admin_dashboard.html';
+    } else if (userRole === 'user') {
+        window.location.href = '../index.html';
+    } else {
+        alert('Role not recognized');
+    }
+}
+
+function parseJwt(token) {
+    const base64Url = token.split('.')[1];
+    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+
+    return JSON.parse(jsonPayload);
+}
